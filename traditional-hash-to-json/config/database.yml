@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: api_serializer
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: api_serializer
+  pool: 5

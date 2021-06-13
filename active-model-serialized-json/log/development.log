@@ -1,0 +1,58 @@
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 18:15:22 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `fetch_current_user'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 4.7ms | Allocations: 8632)
+
+
+  
+NoMethodError (undefined method `courses' for nil:NilClass):
+  
+app/controllers/api/v1/courses_controller.rb:3:in `index'
+Started GET "/api/v1/courses?user_id=2" for ::1 at 2021-06-13 18:22:42 +0530
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"2"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `fetch_current_user'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 10.0ms | Allocations: 6759)
+
+
+  
+NoMethodError (undefined method `courses' for nil:NilClass):
+  
+app/controllers/api/v1/courses_controller.rb:3:in `index'
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 18:22:48 +0530
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `fetch_current_user'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 951)
+
+
+  
+NoMethodError (undefined method `courses' for nil:NilClass):
+  
+app/controllers/api/v1/courses_controller.rb:3:in `index'
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 23:09:52 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `fetch_current_user'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.1ms | Allocations: 8593)
+
+
+  
+NoMethodError (undefined method `courses' for nil:NilClass):
+  
+app/controllers/api/v1/courses_controller.rb:3:in `index'
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 23:10:07 +0530
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ (byebug):1:in `fetch_current_user'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/application_controller.rb:10:in `fetch_current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m

@@ -167,3 +167,40 @@ Processing by Api::V1::CoursesController#index as JSON
 Completed 200 OK in 138ms (Views: 0.2ms | ActiveRecord: 20.6ms | Allocations: 32661)
 
 
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 17:56:50 +0530
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `stub_current_user'
+  [1m[36mCourse Load (1.6ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "user_courses" ON "courses"."id" = "user_courses"."course_id" WHERE "user_courses"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 24]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mAssignment Load (1.0ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments" WHERE "assignments"."topic_id" = $1[0m  [["topic_id", 159]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mTopic Load (1.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 25]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mAssignment Load (0.4ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments" WHERE "assignments"."topic_id" = $1[0m  [["topic_id", 160]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+Completed 200 OK in 137ms (Views: 1.8ms | ActiveRecord: 23.8ms | Allocations: 24143)
+
+
+Started GET "/api/v1/courses?user_id=1" for ::1 at 2021-06-13 17:57:08 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `stub_current_user'
+  [1m[36mCourse Load (0.9ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "user_courses" ON "courses"."id" = "user_courses"."course_id" WHERE "user_courses"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mTopic Load (0.5ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 24]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mAssignment Load (0.5ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments" WHERE "assignments"."topic_id" = $1[0m  [["topic_id", 159]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mTopic Load (0.7ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 25]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+  [1m[36mAssignment Load (0.7ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments" WHERE "assignments"."topic_id" = $1[0m  [["topic_id", 160]]
+  ↳ app/controllers/api/v1/courses_controller.rb:3:in `index'
+Completed 200 OK in 125ms (Views: 0.2ms | ActiveRecord: 22.6ms | Allocations: 32568)
+
+

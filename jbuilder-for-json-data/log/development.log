@@ -1,0 +1,30 @@
+Started GET "/api/v1/courses?user_id=9" for ::1 at 2021-06-16 20:40:11 +0530
+  [1m[35m (156.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as JSON
+  Parameters: {"user_id"=>"9"}
+  [1m[36mUser Load (28.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `fetch_current_user'
+  Rendering api/v1/courses/index.json.jbuilder
+  [1m[36mCourse Load (134.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" INNER JOIN "user_courses" ON "courses"."id" = "user_courses"."course_id" WHERE "user_courses"."user_id" = $1[0m  [["user_id", 9]]
+  ↳ app/views/api/v1/courses/index.json.jbuilder:1
+  [1m[36mTopic Load (68.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 24]]
+  ↳ app/views/api/v1/courses/index.json.jbuilder:3
+  [1m[36mUserTopic Exists? (59.6ms)[0m  [1m[34mSELECT 1 AS one FROM "user_topics" WHERE "user_topics"."user_id" = $1 AND "user_topics"."topic_id" = $2 AND (completed_at IS NOT NULL) LIMIT $3[0m  [["user_id", 9], ["topic_id", 159], ["LIMIT", 1]]
+  ↳ app/models/topic.rb:6:in `is_completed?'
+  [1m[36mCACHE UserTopic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "user_topics" WHERE "user_topics"."user_id" = $1 AND "user_topics"."topic_id" = $2 AND (completed_at IS NOT NULL) LIMIT $3[0m  [["user_id", 9], ["topic_id", 159], ["LIMIT", 1]]
+  ↳ app/models/topic.rb:6:in `is_completed?'
+  [1m[36mAssignment Load (16.5ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments" WHERE "assignments"."topic_id" = $1[0m  [["topic_id", 159]]
+  ↳ app/views/api/v1/courses/_topics.json.jbuilder:4
+  Rendered api/v1/courses/_assignments.json.jbuilder (Duration: 0.5ms | Allocations: 97)
+  Rendered api/v1/courses/_topics.json.jbuilder (Duration: 102.0ms | Allocations: 7715)
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."course_id" = $1[0m  [["course_id", 25]]
+  ↳ app/views/api/v1/courses/index.json.jbuilder:3
+  [1m[36mUserTopic Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "user_topics" WHERE "user_topics"."user_id" = $1 AND "user_topics"."topic_id" = $2 AND (completed_at IS NOT NULL) LIMIT $3[0m  [["user_id", 9], ["topic_id", 160], ["LIMIT", 1]]
+  ↳ app/models/topic.rb:6:in `is_completed?'
+  [1m[36mCACHE UserTopic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "user_topics" WHERE "user_topics"."user_id" = $1 AND "user_topics"."topic_id" = $2 AND (completed_at IS NOT NULL) LIMIT $3[0m  [["user_id", 9], ["topic_id", 160], ["LIMIT", 1]]
+  ↳ app/models/topic.rb:6:in `is_completed?'
+  Rendered api/v1/courses/_topics.json.jbuilder (Duration: 4.2ms | Allocations: 1261)
+  Rendered api/v1/courses/index.json.jbuilder (Duration: 363.8ms | Allocations: 21768)
+Completed 200 OK in 644ms (Views: 70.6ms | ActiveRecord: 465.4ms | Allocations: 36392)
+
+

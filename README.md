@@ -24,7 +24,7 @@ Choose the serializer that you want to explore.
 cd rails-api-serializers/active-model-serialized-json
 ```
 
-In the subdirectory, install dependencies and set up the database. (Configure your `database.yml` file if needed)
+In the subdirectory, install dependencies and set up the database. Configure your `database.yml` file.
 
 ```
 bundle install
